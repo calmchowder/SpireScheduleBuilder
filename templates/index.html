@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+
+
+
+</head>
+
+<body>
+
+<style>
+        p.ex1 {
+            margin: 1cm 0cm 0cm 0cm;
+        }
+
+
+</style>
+
+<div class="jumbotron">
+    <center>
+        <h1>UMass Spire Schedule Builder</h1>
+        <p class="ex1">Made by: Justin Kwan, Keith Woo, Wilson Chen, Sam Lee</p>
+    </center>
+</div>
+
+{% set number_exists = number_exists|default(True) %}
+
+<center>
+    <p style="font-size:18px;">
+        This was built during HackUMassV Nov. 3 - 5 2017.
+        <br>Instructions: Input your class subjects and class numbers, then build your schedule
+
+    </p>
+
+    <br>
+
+    <div style="width: 15%;">
+        <form action="/submit" method="post">
+            <div class="form-group">
+                <h5>Class Subject</h5>
+                <!--<input type="text" name="subject" class="form-control" placeholder="Enter Class Subject">-->
+                <select class="selectpicker"
+                        data-show-subtext="true" data-live-search="true" name="subject" >
+                    {% for subject in subjects %}
+                    <option value="{{ subject }}">{{ subject }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group {% if not number_exists %} has-error {% endif %}" >
+                <h5>Class Number</h5>
+                <input type="text" name="number" class="form-control"
+                       placeholder="Enter Class Number">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+    <br>
+    <form action="/build">
+        <button type="button" class="btn btn-success btn-lg"><h1>BUILD</h1></button>
+    </form>
+
+</center>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+</body>
+
+</html>
