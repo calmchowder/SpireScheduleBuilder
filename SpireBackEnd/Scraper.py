@@ -40,8 +40,8 @@ def get_all_data(class_type, class_num):
     password = browser.find_element_by_css_selector("#pwd")
 
     # Input info in text fields
-    username.send_keys("keithwoo")
-    password.send_keys("Macauchina123")
+    username.send_keys("INSERT NAME HERE")
+    password.send_keys("INSERT PASSWORD HERE")
 
     # Press log in
     browser.find_element_by_css_selector('#login > p:nth-child(5) > input[type="submit"]').submit()
